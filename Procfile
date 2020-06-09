@@ -1,0 +1,1 @@
+web: gunicorn projeto_django_alura_receitas.wsgi
