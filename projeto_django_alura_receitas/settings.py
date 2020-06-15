@@ -140,4 +140,4 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'success',
 }
 
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
