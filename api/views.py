@@ -20,7 +20,7 @@ def apiOverview(request):
 
 @api_view(['GET'])
 def listaReceitas(request):
-    receitas = Post.objects.all()
+    receitas = Receita.objects.all()
     serializer = ReceitaSerializer(receitas, many=True)
     return Response(serializer.data)
 
