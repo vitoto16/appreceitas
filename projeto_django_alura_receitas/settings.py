@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['appreceitas.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'api.apps.ApiConfig',
     'receitas',
     'usuarios',
     'django.contrib.admin',
