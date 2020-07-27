@@ -27,7 +27,13 @@ def apiOverview(request):
 
 class ListaReceitas(generics.ListAPIView):
     serializer_class = ReceitaSerializer
-    queryset = Receita.objects.all()
+
+    def get_queryset(self):
+        queryset = Receita.objects.all()
+        pessoa = self.request.query_params.get('pessoa')
+
+        if pessoa:
+            queryset = queryset.filter(pessoa=pessoa)
 
 @api_view(['GET'])
 def detalheReceita(request, pk):
