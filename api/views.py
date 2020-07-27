@@ -35,6 +35,8 @@ class ListaReceitas(generics.ListAPIView):
         if pessoa:
             queryset = queryset.filter(pessoa=pessoa)
 
+        return queryset
+
 @api_view(['GET'])
 def detalheReceita(request, pk):
     receita = Receita.objects.get(id=pk)
