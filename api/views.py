@@ -33,7 +33,7 @@ class ListaReceitas(generics.ListAPIView):
         pessoa = self.request.query_params.get('pessoa')
 
         if pessoa:
-            queryset = queryset.filter(pessoa=pessoa)
+            queryset = queryset.filter(pessoa__username=pessoa)
 
         return queryset
 
