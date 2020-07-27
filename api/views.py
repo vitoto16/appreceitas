@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from receitas.models import Receita
 
+from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import ReceitaSerializer
@@ -18,11 +19,15 @@ def apiOverview(request):
 
     return Response(api_urls)
 
-@api_view(['GET'])
-def listaReceitas(request):
-    receitas = Receita.objects.all().filter(publicada=True)
-    serializer = ReceitaSerializer(receitas, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def listaReceitas(request):
+#     receitas = Receita.objects.all().filter(publicada=True)
+#     serializer = ReceitaSerializer(receitas, many=True)
+#     return Response(serializer.data)
+
+class ListaReceitas(generics.ListAPIView):
+    serializer_class = ReceitaSerializer
+    queryset = Receita.objects.all()
 
 @api_view(['GET'])
 def detalheReceita(request, pk):
