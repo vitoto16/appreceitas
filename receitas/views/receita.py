@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
+from django.views.decorators.cache import cache_page
 from receitas.models import Receita
 from django.contrib.auth.models import User
-from django.contrib import auth, messages
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator
 
+@cache_page(600)
 def index(request):
 
     receitas = Receita.objects.order_by('-data_receita').filter(publicada=True)
